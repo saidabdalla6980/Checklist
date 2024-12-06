@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Task List</h1>
+    <a href="{% url 'task-create' %}">Add New Task</a>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <a href="{% url 'task-detail' task.id %}">{{ task.title }}</a>
+                {% if task.completed %}
+                    <span class="completed">✔</span>
+                {% endif %}
+            </li>
+        {% empty %}
+            <p>No tasks available. <a href="{% url 'task-create' %}">Create one now!</a></p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

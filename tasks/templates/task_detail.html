@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Detail</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Task Details</h1>
+    <h2>{{ task.title }}</h2>
+    <p>{{ task.description }}</p>
+    <p>Status: {% if task.completed %} Completed {% else %} Not Completed {% endif %}</p>
+    <a href="{% url 'task-update' task.id %}">Edit Task</a>
+    <a href="{% url 'task-delete' task.id %}">Delete Task</a>
+    <a href="{% url 'task-list' %}">Back to Task List</a>
+</body>
+</html>
